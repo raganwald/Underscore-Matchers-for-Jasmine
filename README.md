@@ -4,7 +4,7 @@ Underscore Matchers for Jasmine
 What and Why
 ---
 
-This "library" adds a series of matchers for [Jasmine][1]-based Javascript/[Coffeescript][2] testing based on Underscore methods. Example:
+This "library" adds a series of matchers for [Jasmine][1]-based Javascript/[Coffeescript][2] testing based on [Underscore][7] methods. Example:
 
     expect(snafu).toInclude('s', 'n', 'a') // equivalent to:
     expect(
@@ -18,6 +18,7 @@ This "library" adds a series of matchers for [Jasmine][1]-based Javascript/[Coff
     
 [1]: https://github.com/pivotal/jasmine
 [2]: https://github.com/jashkenas/coffee-script
+[7]: http://documentcloud.github.com/underscore/
 
 That makes your tests easy to read, for example:
 
@@ -134,3 +135,5 @@ No. I also sneak in some Backbone stuff here and there, but the code works just 
       
     expect(new Backbone.Collection()).toBeEmpty()
       // => succeeds
+      
+The same goes for collection tests like `.toInclude`. You can pass it a backbone collection or an array as you see fit. If you don't want that behaviour, Jasmine includes a `contains()` matcher that expects an array.
