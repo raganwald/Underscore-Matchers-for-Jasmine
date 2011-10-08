@@ -28,6 +28,7 @@ That makes your tests easy to read, for example:
           state_1_1 = state_machine_1.new_state()
           state_1_2 = state_machine_1.new_state()
           expect(state_1_1).toNotEqual(state_1_2)
+          
           expect(state_machine_1.states()).toInclude(state_1_1, state_1_2)
 
 **Is it any good?**
@@ -77,7 +78,7 @@ Read the code in [Coffeescript][5] or [Javascript][6].
 
 **That's it? Aren't there any more?**
 
-This is what I happen to need right now for my actual code. I suppose I could go through and make a matcher for every function in Underscore, but I'd rather let it grow organically. If there's a matcher you need that isn't here, well, this is a ship:
+This is what I happen to need right now for my actual code. I suppose I could go through and make a matcher for every function in Underscore, but I'd rather let it grow organically. If there's a matcher you need that isn't here, well, **we're all in the same boat**:
 
 * If you're a *passenger*, send me a message describing the matcher you want. If it seems useful, I'll add it.
 * If you're a *sailor*, fork this project, add the matcher, and send me a pull request.
