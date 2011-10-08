@@ -82,8 +82,9 @@ This is what I happen to need right now for my actual code. I suppose I could go
 
 * If you're a *passenger*, send me a message describing the matcher you want. If it seems useful, I'll add it.
 * If you're a *sailor*, fork this project, add the matcher, and send me a pull request.
+* If you're a *pirate*, take this code and/or just the idea and make your own library. I'm cool with that.
 
-(I'm pretty confident these matchers do what they're supposed to do, because I'm using them in a test-driven project. But if you're a sailor with some ideas about how to write tests for matchers, I'm very interested in suggestions for how to write a test suite that could be run from the command line.)
+(A personal note: I'm pretty confident these matchers do what they're supposed to do, because I'm using them in a test-driven project. But if you're a sailor with some ideas about how to write tests for matchers, I'm very interested in suggestions for how to write a test suite that could be run from the command line.)
 
 **Is this free software?**
 
