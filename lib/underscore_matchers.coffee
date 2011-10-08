@@ -14,5 +14,5 @@ _.defaults jasmine.Matchers.prototype,
       invoke.call(this, 'include', item)
 
   toIncludeAny: (items...) ->
-    _(items).all (item) =>
+    _(items).any (item) =>
       invoke.call(this, 'include', item)
