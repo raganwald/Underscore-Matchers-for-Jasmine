@@ -17,3 +17,11 @@ _.defaults jasmine.Matchers.prototype,
   toIncludeAny: (items...) ->
     _(items).any (item) =>
       invoke.call(this, 'include', item)
+
+  toBeCompact: ->
+    elements = invoke.call(this, 'map', _.identity)
+    _.isEqual elements, _.compact(elements)
+
+  toBeUnique: ->
+    elements = invoke.call(this, 'map', _.identity)
+    _.isEqual elements, _.uniq(elements)

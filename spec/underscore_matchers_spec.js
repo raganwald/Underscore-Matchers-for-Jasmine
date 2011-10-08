@@ -37,7 +37,7 @@
         });
       }
     });
-    return describe("toIncludeAny", function() {
+    describe("toIncludeAny", function() {
       it('should work for arrays', function() {
         expect([]).not.toIncludeAny('s');
         expect(['s', 'n', 'a', 'f', 'u']).toIncludeAny('f', 'a', 'n');
@@ -58,6 +58,35 @@
           return expect(c).not.toIncludeAny(p, x);
         });
       }
+    });
+    describe("toBeCompact", function() {
+      var undef;
+      undef = null;
+      (function(_) {
+        return undef = _;
+      })();
+      expect(undef).toBeUndefined();
+      return it('should work for arrays', function() {
+        expect([]).toBeCompact();
+        expect(['s', 'n', 'a', 'f', 'u']).toBeCompact();
+        expect(['s', 'n', 'a', false, 'u']).not.toBeCompact();
+        expect(['s', null, 'a', 'f', 'u']).not.toBeCompact();
+        return expect(['s', 'n', 'a', 'f', undef]).not.toBeCompact();
+      });
+    });
+    return describe("toBeUnique", function() {
+      var undef;
+      undef = null;
+      (function(_) {
+        return undef = _;
+      })();
+      expect(undef).toBeUndefined();
+      return it('should work for arrays', function() {
+        expect([]).toBeUnique();
+        expect(['s', 'n', 'a', 'f', 'u']).toBeUnique();
+        expect(['s', 'n', 'a', 'a', 'u']).not.toBeUnique();
+        return expect(['s', 'f', 'u', 'f', 'u']).not.toBeUnique();
+      });
     });
   });
 }).call(this);

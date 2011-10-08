@@ -64,3 +64,30 @@ $ ->
         expect(c).toIncludeAny p, a, n
         expect(c).toIncludeAny f, a, x
         expect(c).not.toIncludeAny p, x
+
+  describe "toBeCompact", ->
+
+    undef = null
+    ((_) -> undef = _)()
+    expect(undef).toBeUndefined()
+
+    it 'should work for arrays', ->
+
+      expect([]).toBeCompact()
+      expect(['s', 'n', 'a', 'f', 'u']).toBeCompact()
+      expect(['s', 'n', 'a', false, 'u']).not.toBeCompact()
+      expect(['s', null, 'a', 'f', 'u']).not.toBeCompact()
+      expect(['s', 'n', 'a', 'f', undef]).not.toBeCompact()
+
+  describe "toBeUnique", ->
+
+    undef = null
+    ((_) -> undef = _)()
+    expect(undef).toBeUndefined()
+
+    it 'should work for arrays', ->
+
+      expect([]).toBeUnique()
+      expect(['s', 'n', 'a', 'f', 'u']).toBeUnique()
+      expect(['s', 'n', 'a', 'a', 'u']).not.toBeUnique()
+      expect(['s', 'f', 'u', 'f', 'u']).not.toBeUnique()
