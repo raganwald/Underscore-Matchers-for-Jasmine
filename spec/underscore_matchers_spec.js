@@ -74,7 +74,7 @@
         return expect(['s', 'n', 'a', 'f', undef]).not.toBeCompact();
       });
     });
-    return describe("toBeUnique", function() {
+    describe("toBeUnique", function() {
       var undef;
       undef = null;
       (function(_) {
@@ -86,6 +86,17 @@
         expect(['s', 'n', 'a', 'f', 'u']).toBeUnique();
         expect(['s', 'n', 'a', 'a', 'u']).not.toBeUnique();
         return expect(['s', 'f', 'u', 'f', 'u']).not.toBeUnique();
+      });
+    });
+    return describe('toRespondTo', function() {
+      it('should work for a single function', function() {
+        expect([]).toRespondTo('push');
+        expect([]).toRespondTo('pop');
+        return expect([]).not.toRespondTo('pizzle');
+      });
+      return it('should have all semantics for multiple functions', function() {
+        expect([]).toRespondTo('push', 'pop');
+        return expect([]).not.toRespondTo('push', 'pop', 'pizzle');
       });
     });
   });

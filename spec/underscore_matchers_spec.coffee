@@ -91,3 +91,17 @@ $ ->
       expect(['s', 'n', 'a', 'f', 'u']).toBeUnique()
       expect(['s', 'n', 'a', 'a', 'u']).not.toBeUnique()
       expect(['s', 'f', 'u', 'f', 'u']).not.toBeUnique()
+
+  describe 'toRespondTo', ->
+
+    it 'should work for a single function', ->
+
+      expect([]).toRespondTo('push')
+      expect([]).toRespondTo('pop')
+      expect([]).not.toRespondTo('pizzle')
+
+    it 'should have all semantics for multiple functions', ->
+
+      expect([]).toRespondTo('push','pop')
+      expect([]).not.toRespondTo('push','pop','pizzle')
+

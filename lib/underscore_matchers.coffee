@@ -25,3 +25,7 @@ _.defaults jasmine.Matchers.prototype,
   toBeUnique: ->
     elements = invoke.call(this, 'map', _.identity)
     _.isEqual elements, _.uniq(elements)
+
+  toRespondTo: (methods...)->
+    _.all methods, (method) =>
+      _.isFunction(@actual[method])
