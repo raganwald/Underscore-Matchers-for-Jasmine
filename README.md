@@ -70,11 +70,25 @@ If you're using Coffeescript, put `underscore_matchers.coffee` in your project. 
 
 **Which Matchers are included?**
 
-Read the code in Coffeescript or Javascript.
+Read the code in [Coffeescript][5] or [Javascript][6].
+
+[5]: https://github.com/raganwald/Underscore-Matchers-for-Jasmine/blob/master/lib/underscore_matchers.coffee
+[6]: https://github.com/raganwald/Underscore-Matchers-for-Jasmine/blob/master/lib/underscore_matchers.js
+
+**That's it? Aren't there any more?**
+
+This is what I happen to need right now for my actual code. I suppose I could go through and make a matcher for every function in Underscore, but I'd rather let it grow organically. If there's a matcher you need that isn't here, well, this is a ship:
+
+* If you're a *passenger*, send me a message describing the matcher you want. If it seems useful, I'll add it.
+* If you're a *sailor*, fork this project, add the matcher, and send me a pull request.
+
+(I'm pretty confident these matchers do what they're supposed to do, because I'm using them in a test-driven project. But if you're a sailor with some ideas about how to write tests for matchers, I'm very interested in suggestions for how to write a test suite that could be run from the command line.)
 
 **Is this free software?**
 
-Yes.
+[Yes][4].
+
+[4]: https://github.com/raganwald/Underscore-Matchers-for-Jasmine/blob/master/license.txt
 
 Other Random Observations
 ---
