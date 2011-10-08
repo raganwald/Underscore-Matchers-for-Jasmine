@@ -4,7 +4,7 @@ Underscore Matchers for Jasmine
 What and Why
 ---
 
-This "library" adds a series of matchers for [Jasmine][1]-based Javascript/[Coffeescript][2] testing based on [Underscore][7] methods. Example:
+This "library" adds a series of matchers for [Jasmine][1]-based Javascript/[Coffeescript][2] testing based on [Underscore][_] methods. Example:
 
     expect(snafu).toInclude('s', 'n', 'a')
     
@@ -13,14 +13,14 @@ This "library" adds a series of matchers for [Jasmine][1]-based Javascript/[Coff
       _(snafu).include('s') && _(snafu).include('n') && _(snafu).include('a')
     ).toBeTruthy()
 
-    // if snafu is a backbone collection, this is equivalent to:
+    // if snafu is a Backbone.js collection, this is equivalent to:
     expect(
       snafu.include('s') && snafu.include('n') && snafu.include('a')
     ).toBeTruthy()
     
 [1]: https://github.com/pivotal/jasmine
 [2]: https://github.com/jashkenas/coffee-script
-[7]: http://documentcloud.github.com/underscore/
+[_]: http://documentcloud.github.com/underscore/
 
 That makes your tests easy to read, for example:
 
@@ -33,6 +33,17 @@ That makes your tests easy to read, for example:
           expect(state_1_1).toNotEqual(state_1_2)
           
           expect(state_machine_1.states()).toInclude(state_1_1, state_1_2)
+          
+**Why do I want this?**
+
+Let's take it point by point:
+
+1. Underscore is a utility-belt library for Javascript. If you're using [Backbone.js][b], you are already using [Underscore][_]. If you aren't using either, you are excused from class, this library does not apply to your project.
+2. Jasmine is a [Test-Driven Development][tdd] testing framework for JavaScript. You can run tests in a pretty browser window, you can run tests on the command line with Node.js, you can run tests in the console. If you are writing Javascript and/or Coffeescript, you should be using Jasmine.
+3. If you are using Underscore or Backbone and you are using Jasmine, your tests will be cleaner and more readable with these Underscore matchers for the same reason that your code is cleaner and more readable with Underscore.
+
+[tdd]: http://en.wikipedia.org/wiki/Test_Driven_Development
+[b]: http://documentcloud.github.com/backbone/
 
 **Is it any good?**
 
