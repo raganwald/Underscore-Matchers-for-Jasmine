@@ -6,14 +6,16 @@ What and Why
 
 This "library" adds a series of matchers for [Jasmine][1]-based Javascript/[Coffeescript][2] testing based on [Underscore][7] methods. Example:
 
-    expect(snafu).toInclude('s', 'n', 'a') // equivalent to:
+    expect(snafu).toInclude('s', 'n', 'a')
+    
+    // if snafu is an array, this is equivalent to:
     expect(
-      _(snaful).include('s') && _(snaful).include('n') && _(snaful).include('a')
+      _(snafu).include('s') && _(snafu).include('n') && _(snafu).include('a')
     ).toBeTruthy()
 
-    expect(snafu).toIncludeAny('f', 'u') // equivalent to:
+    // if snafu is a backbone collection, this is equivalent to:
     expect(
-      _(snaful).include('f') || _(snaful).include('u')
+      snafu.include('s') && snafu.include('n') && snafu.include('a')
     ).toBeTruthy()
     
 [1]: https://github.com/pivotal/jasmine
