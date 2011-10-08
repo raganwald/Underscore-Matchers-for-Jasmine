@@ -2,7 +2,8 @@ invoke = (method_name, args...) ->
   if _.isFunction(@actual[method_name])
     @actual[method_name].apply(@actual, args)
   else
-    _(@actual)[method_name].apply(@actual, args)
+    args.unshift(@actual)
+    _[method_name].apply(@actual, args)
 
 _.defaults jasmine.Matchers.prototype,
 
