@@ -118,6 +118,38 @@ I am.
 
 No. This is a Coffeescript and Javascript include file, not a ruby library. Coffeescript and Javascript files work everywhere, and you can read the source any time you want.
 
+**Any gotchas?**
+
+Some matchers, such as `toInclude(...)` and `toRespondTo(...)` can take multiple arguments. When they do, they have "all" semantics. For example:
+    
+    expect([1,2,3,4,5]).toRespondTo('push', 'pop')
+      // => succeeds because arrays respond to .push and .pop
+
+    expect([1,2,3,4,5]).toInclude(2,3,4,5,6)
+       // => fails because 6 is not included.
+      
+Now what if you want to test the opposite?
+
+    expect([1,2,3,4,5]).not.toInclude(2,3,4,5,6)
+      // succeeds because it doesn't include 2, 3, 4, 5, AND 6.
+      
+If that's what you want, fine. But if what you really want is to test whether it doesn't include ANY of the arguments, you need a slightly different matcher:
+    
+    expect([1,2,3,4,5]).toRespondTo('push', 'select_sql', 'diagonalize')
+      // => succeeds because arrays respond to at least one of the three methods given
+
+    expect([1,2,3,4,5]).toIncludeAny(2,3,4,5,6)
+      //  => succeeds because it includes at least one of the arguments
+
+The opposite of an "any" matcher is a "none" matcher:
+
+    expect([1,2,3,4,5]).not.toIncludeAny(3, 6, 9)
+      //  => fails because it includes a 3
+
+    expect([1,2,3,4,5]).not.toIncludeAny(6, 9, 12)
+      //  => succeeds because it does not include ANY of the aarguments
+
+
 **Is this just for underscore stuff?**
 
 No. I also sneak in some Backbone stuff here and there, but the code works just fine even if you don't use Backbone.js. For example:
