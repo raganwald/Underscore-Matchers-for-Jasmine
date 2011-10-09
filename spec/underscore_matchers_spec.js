@@ -88,7 +88,7 @@
         return expect(['s', 'f', 'u', 'f', 'u']).not.toBeUnique();
       });
     });
-    return describe('toRespondTo', function() {
+    describe('toRespondTo', function() {
       it('should work for a single function', function() {
         expect([]).toRespondTo('push');
         expect([]).toRespondTo('pop');
@@ -97,6 +97,17 @@
       return it('should have all semantics for multiple functions', function() {
         expect([]).toRespondTo('push', 'pop');
         return expect([]).not.toRespondTo('push', 'pop', 'pizzle');
+      });
+    });
+    return describe('toRespondToAny', function() {
+      it('should work for a single function', function() {
+        expect([]).toRespondToAny('push');
+        expect([]).toRespondToAny('pop');
+        return expect([]).not.toRespondToAny('pizzle');
+      });
+      return it('should have any semantics for multiple functions', function() {
+        expect([]).toRespondToAny('push', 'pop', 'pizzle');
+        return expect([]).not.toRespondTo('pasta', 'salad', 'pizzle');
       });
     });
   });

@@ -29,3 +29,7 @@ _.defaults jasmine.Matchers.prototype,
   toRespondTo: (methods...)->
     _.all methods, (method) =>
       _.isFunction(@actual[method])
+
+  toRespondToAny: (methods...)->
+    _.any methods, (method) =>
+      _.isFunction(@actual[method])

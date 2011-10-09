@@ -105,3 +105,16 @@ $ ->
       expect([]).toRespondTo('push','pop')
       expect([]).not.toRespondTo('push','pop','pizzle')
 
+  describe 'toRespondToAny', ->
+
+    it 'should work for a single function', ->
+
+      expect([]).toRespondToAny('push')
+      expect([]).toRespondToAny('pop')
+      expect([]).not.toRespondToAny('pizzle')
+
+    it 'should have any semantics for multiple functions', ->
+
+      expect([]).toRespondToAny('push','pop', 'pizzle')
+      expect([]).not.toRespondTo('pasta','salad','pizzle')
+
