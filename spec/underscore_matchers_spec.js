@@ -110,6 +110,41 @@
         return expect([]).not.toRespondTo('pasta', 'salad', 'pizzle');
       });
     });
+    describe('toBeAnInstanceOf', function() {
+      it('should work with basic JS objects', function() {
+        var C, D, c;
+        C = function() {};
+        D = function() {};
+        c = new C();
+        expect(c).toBeAnInstanceOf(Object);
+        expect(c).toBeAnInstanceOf(C);
+        expect(c).not.toBeAnInstanceOf(D);
+        expect(c).toBeA(Object);
+        expect(c).toBeA(C);
+        expect(c).not.toBeA(D);
+        expect(c).toBeAn(Object);
+        expect(c).toBeAn(C);
+        return expect(c).not.toBeAn(D);
+      });
+      if (typeof Backbone !== "undefined" && Backbone !== null) {
+        return it('should work with Backbone classes as well', function() {
+          var B, C, D, c;
+          B = Backbone.Model.extend();
+          C = B.extend();
+          D = Backbone.Model.extend();
+          c = new C();
+          expect(c).toBeAnInstanceOf(B);
+          expect(c).toBeAnInstanceOf(C);
+          expect(c).not.toBeAnInstanceOf(D);
+          expect(c).toBeA(B);
+          expect(c).toBeA(C);
+          expect(c).not.toBeA(D);
+          expect(c).toBeAn(B);
+          expect(c).toBeAn(C);
+          return expect(c).not.toBeAn(D);
+        });
+      }
+    });
     if (typeof Backbone !== "undefined" && Backbone !== null) {
       describe('toHave', function() {
         it('should report whether a property is set with something truthy', function() {

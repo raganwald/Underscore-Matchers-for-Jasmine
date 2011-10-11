@@ -118,6 +118,46 @@ $ ->
       expect([]).toRespondToAny('push','pop', 'pizzle')
       expect([]).not.toRespondTo('pasta','salad','pizzle')
 
+
+  describe 'toBeAnInstanceOf', ->
+
+    it 'should work with basic JS objects', ->
+      C = () ->
+      D = () ->
+
+      c = new C()
+      expect(c).toBeAnInstanceOf(Object)
+      expect(c).toBeAnInstanceOf(C)
+      expect(c).not.toBeAnInstanceOf(D)
+
+      expect(c).toBeA(Object)
+      expect(c).toBeA(C)
+      expect(c).not.toBeA(D)
+
+      expect(c).toBeAn(Object)
+      expect(c).toBeAn(C)
+      expect(c).not.toBeAn(D)
+
+    if Backbone?
+
+      it 'should work with Backbone classes as well', ->
+        B = Backbone.Model.extend()
+        C = B.extend()
+        D = Backbone.Model.extend()
+
+        c = new C()
+        expect(c).toBeAnInstanceOf(B)
+        expect(c).toBeAnInstanceOf(C)
+        expect(c).not.toBeAnInstanceOf(D)
+
+        expect(c).toBeA(B)
+        expect(c).toBeA(C)
+        expect(c).not.toBeA(D)
+
+        expect(c).toBeAn(B)
+        expect(c).toBeAn(C)
+        expect(c).not.toBeAn(D)
+
   if Backbone?
 
     describe 'toHave', ->

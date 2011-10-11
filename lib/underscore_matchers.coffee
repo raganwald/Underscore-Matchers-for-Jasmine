@@ -41,3 +41,12 @@ _.defaults jasmine.Matchers.prototype,
   toHaveAny: (attrs...) ->
     _.any attrs, (attr) =>
       @actual.has(attr)
+
+  toBeAnInstanceOf: (clazz) ->
+    @actual instanceof clazz
+
+  toBeA: (clazz) ->
+    @actual instanceof clazz
+
+  toBeAn: (clazz) ->
+    @actual instanceof clazz
