@@ -99,7 +99,7 @@
         return expect([]).not.toRespondTo('push', 'pop', 'pizzle');
       });
     });
-    return describe('toRespondToAny', function() {
+    describe('toRespondToAny', function() {
       it('should work for a single function', function() {
         expect([]).toRespondToAny('push');
         expect([]).toRespondToAny('pop');
@@ -110,5 +110,100 @@
         return expect([]).not.toRespondTo('pasta', 'salad', 'pizzle');
       });
     });
+    if (typeof Backbone !== "undefined" && Backbone !== null) {
+      describe('toHave', function() {
+        it('should report whether a property is set with something truthy', function() {
+          var model;
+          model = new Backbone.Model({
+            foo: 'fu'
+          });
+          expect(model).toHave('foo');
+          return expect(model).not.toHave('bar');
+        });
+        it('should have the same semantics as .has for falsy-ish values', function() {
+          var model;
+          model = new Backbone.Model({
+            "false": false,
+            "null": null,
+            zero: 0,
+            empty_array: [],
+            empty_string: '',
+            undefined: void 0
+          });
+          return _.each(model.attributes, function(value, key) {
+            if (model.has(key)) {
+              return expect(model).toHave(key);
+            } else {
+              return expect(model).not.toHave(key);
+            }
+          });
+        });
+        it('should be compatible with unset', function() {
+          var model;
+          model = new Backbone.Model({
+            foo: 'fu'
+          });
+          expect(model).toHave('foo');
+          model.unset('foo');
+          return expect(model).not.toHave('foo');
+        });
+        return it('should have all semantics', function() {
+          var model;
+          model = new Backbone.Model({
+            foo: 'fu',
+            bar: 'bar'
+          });
+          expect(model).toHave('foo', 'bar');
+          return expect(model).not.toHave('snafu', 'bar');
+        });
+      });
+      return describe('toHaveAny', function() {
+        it('should report whether a property is set with something truthy', function() {
+          var model;
+          model = new Backbone.Model({
+            foo: 'fu'
+          });
+          expect(model).toHaveAny('foo');
+          return expect(model).not.toHaveAny('bar');
+        });
+        it('should have the same semantics as .has for falsy-ish values', function() {
+          var model;
+          model = new Backbone.Model({
+            "false": false,
+            "null": null,
+            zero: 0,
+            empty_array: [],
+            empty_string: '',
+            undefined: void 0
+          });
+          return _.each(model.attributes, function(value, key) {
+            if (model.has(key)) {
+              return expect(model).toHaveAny(key);
+            } else {
+              return expect(model).not.toHaveAny(key);
+            }
+          });
+        });
+        it('should be compatible with unset', function() {
+          var model;
+          model = new Backbone.Model({
+            foo: 'fu'
+          });
+          expect(model).toHaveAny('foo');
+          model.unset('foo');
+          return expect(model).not.toHaveAny('foo');
+        });
+        return it('should have any semantics', function() {
+          var model;
+          model = new Backbone.Model({
+            foo: 'fu',
+            bar: 'bar'
+          });
+          expect(model).toHaveAny('foo', 'bar');
+          expect(model).toHaveAny('snafu', 'bar');
+          return expect(model).not.toHaveAny('snafu', 'fubar');
+        });
+      });
+    }
   });
 }).call(this);

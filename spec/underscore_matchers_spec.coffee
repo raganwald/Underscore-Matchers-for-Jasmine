@@ -118,3 +118,77 @@ $ ->
       expect([]).toRespondToAny('push','pop', 'pizzle')
       expect([]).not.toRespondTo('pasta','salad','pizzle')
 
+  if Backbone?
+
+    describe 'toHave', ->
+
+      it 'should report whether a property is set with something truthy', ->
+        model = new Backbone.Model
+          foo: 'fu'
+        expect(model).toHave('foo')
+        expect(model).not.toHave('bar')
+
+      it 'should have the same semantics as .has for falsy-ish values', ->
+        model = new Backbone.Model
+          false: false
+          null: null
+          zero: 0
+          empty_array: []
+          empty_string: ''
+          undefined: undefined
+        _.each model.attributes, (value, key) ->
+          if model.has(key)
+            expect(model).toHave(key)
+          else
+            expect(model).not.toHave(key)
+
+      it 'should be compatible with unset', ->
+        model = new Backbone.Model
+          foo: 'fu'
+        expect(model).toHave('foo')
+        model.unset('foo')
+        expect(model).not.toHave('foo')
+
+      it 'should have all semantics', ->
+        model = new Backbone.Model
+          foo: 'fu'
+          bar: 'bar'
+        expect(model).toHave('foo', 'bar')
+        expect(model).not.toHave('snafu', 'bar')
+
+    describe 'toHaveAny', ->
+
+      it 'should report whether a property is set with something truthy', ->
+        model = new Backbone.Model
+          foo: 'fu'
+        expect(model).toHaveAny('foo')
+        expect(model).not.toHaveAny('bar')
+
+      it 'should have the same semantics as .has for falsy-ish values', ->
+        model = new Backbone.Model
+          false: false
+          null: null
+          zero: 0
+          empty_array: []
+          empty_string: ''
+          undefined: undefined
+        _.each model.attributes, (value, key) ->
+          if model.has(key)
+            expect(model).toHaveAny(key)
+          else
+            expect(model).not.toHaveAny(key)
+
+      it 'should be compatible with unset', ->
+        model = new Backbone.Model
+          foo: 'fu'
+        expect(model).toHaveAny('foo')
+        model.unset('foo')
+        expect(model).not.toHaveAny('foo')
+
+      it 'should have any semantics', ->
+        model = new Backbone.Model
+          foo: 'fu'
+          bar: 'bar'
+        expect(model).toHaveAny('foo', 'bar')
+        expect(model).toHaveAny('snafu', 'bar')
+        expect(model).not.toHaveAny('snafu', 'fubar')
