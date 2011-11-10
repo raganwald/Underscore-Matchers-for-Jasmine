@@ -54,7 +54,9 @@ Let's take it point by point:
 
 **Is it any good?**
 
-Yes.
+[Yes][y].
+
+[y]: http://news.ycombinator.com/item?id=3067434
 
 **How do I install it?**
 
