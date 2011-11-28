@@ -1,10 +1,7 @@
 Underscore Matchers for Jasmine
 ===
 
-What and Why
----
-
-This "library" adds a series of matchers for [Jasmine][1]-based Javascript/[Coffeescript][2] testing based on [Underscore][_] methods. Example:
+UnderscoreMatchersForJasmine adds a series of matchers for [Jasmine][1]-based Javascript/[Coffeescript][2] testing based on [Underscore][_] methods. Example:
 
     expect(snafu).toInclude('s', 'n', 'a')
     
@@ -40,8 +37,16 @@ That makes your tests easy to read, for example:
           
           expect(running).toBeA(State)
           expect(running).toHave('rpm')
+
+Is it any good?
+---
+
+[Yes][y].
+
+[y]: http://news.ycombinator.com/item?id=3067434
           
-**Why do I want this?**
+*Why* is it any good?
+---
 
 Let's take it point by point:
 
@@ -52,11 +57,15 @@ Let's take it point by point:
 [tdd]: http://en.wikipedia.org/wiki/Test_Driven_Development
 [b]: http://documentcloud.github.com/backbone/
 
-**Is it any good?**
+Can I install it with npm?
+---
 
-Yes.
+Yes:
 
-**How do I install it?**
+    npm install UnderscoreMatchersForJasmine
+
+Can I install it in other kinds of projects?
+---
 
 If you're using Coffeescript, put `underscore_matchers.coffee` in your project. If you're using plain Javascript, it should therefore follow that you want to put `underscore_matchers.js` in your project. It's one file, just make sure that your include declarations or asset pipeline includes `underscore_matchers` *after* `jasmine.js`. That's it. For example, here's a [Jammit][3] `assets.yml` file from a Rails project:
 
@@ -92,14 +101,16 @@ If you're using Coffeescript, put `underscore_matchers.coffee` in your project. 
 
 You can also put `underscore_matchers_spec.coffee` or `underscore_matchers_spec.js` in your project if you want to see these matchers test themselves. It's also handy documentation for how the matchers behave!
 
-**Which Matchers are included?**
+Which Matchers are included?
+---
 
 Read the code in [Coffeescript][5] or [Javascript][6].
 
 [5]: https://github.com/raganwald/Underscore-Matchers-for-Jasmine/blob/master/lib/underscore_matchers.coffee
 [6]: https://github.com/raganwald/Underscore-Matchers-for-Jasmine/blob/master/lib/underscore_matchers.js
 
-**That's it? Aren't there any more?**
+That's it? Aren't there any more?
+---
 
 This is what I happen to need right now for my actual code. **As I write more matchers, I'll add them**. So, if you're interested, watch the library. I suppose I could go through and make a matcher for every function in Underscore, but I'd rather let it grow organically. If there's a matcher you need that isn't here, well, **we're all in the same boat**:
 
@@ -108,7 +119,8 @@ This is what I happen to need right now for my actual code. **As I write more ma
 * If you're the *captain of your own ship*, and you've already written some matchers like this, run up some signal flags and I'll include links to your project right here.
 * And if you're a *pirate*, take this code and/or just the idea and make your own library. I'm cool with that.
 
-**Is this free software?**
+Is it free?
+---
 
 [Yes][4].
 
