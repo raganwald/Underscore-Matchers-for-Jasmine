@@ -57,50 +57,6 @@ Let's take it point by point:
 [tdd]: http://en.wikipedia.org/wiki/Test_Driven_Development
 [b]: http://documentcloud.github.com/backbone/
 
-Can I install it with npm?
----
-
-Yes:
-
-    npm install UnderscoreMatchersForJasmine
-
-Can I install it in other kinds of projects?
----
-
-If you're using Coffeescript, put `underscore_matchers.coffee` in your project. If you're using plain Javascript, it should therefore follow that you want to put `underscore_matchers.js` in your project. It's one file, just make sure that your include declarations or asset pipeline includes `underscore_matchers` *after* `jasmine.js`. That's it. For example, here's a [Jammit][3] `assets.yml` file from a Rails project:
-
-    allow_debugging: off
-    template_function: _.template
-    compress_assets: false
-
-    javascripts:
-      common:
-        - public/js/vendor/json2.js
-        - public/js/vendor/jquery-1.6.1.min.js
-        - public/js/vendor/jquery-ui-1.8.min.js
-        - public/js/vendor/jquery.combinators.min.js
-        - public/js/vendor/jquery.predicates.min.js
-        - public/js/vendor/underscore-min.js
-        - public/js/vendor/backbone.js
-        - public/js/vendor/async.js
-      application:
-        - public/js/compiled/models/*.js
-      test:
-        - public/js/vendor/jasmine/jasmine.js
-        - public/js/vendor/jasmine/jasmine-html.js
-        - public/js/compiled/jasmine/underscore_matchers.js
-        - public/js/compiled/spec/*.js
-
-    stylesheets:
-      common:
-      application:
-      test:
-        - public/js/vendor/jasmine/*.css
-        
-[3]: https://github.com/documentcloud/jammit
-
-You can also put `underscore_matchers_spec.coffee` or `underscore_matchers_spec.js` in your project if you want to see these matchers test themselves. It's also handy documentation for how the matchers behave!
-
 Which Matchers are included?
 ---
 
@@ -110,11 +66,11 @@ Or here's the "tl;dr:"
 
     # collections:
     
-    expect([...]).toBeEmpty() or expect(new Backbone.Collection(...)).toBeEmpty()
+    expect([...]).toBeEmpty()         or expect(new Backbone.Collection(...)).toBeEmpty()
     expect([...]).toInclude(foo, bar) or expect(new Backbone.Collection(...)).toInclude(foo, bar)
     expect([...]).toIncludeAny(blitz) or expect(new Backbone.Collection(...)).toIncludeAny(blitz)
-    expect([...]).toBeCompact() or expect(new Backbone.Collection(...)).toBeCompact()
-    expect([...]).toBeUnique() or expect(new Backbone.Collection(...)).toBeUnique()
+    expect([...]).toBeCompact()       or expect(new Backbone.Collection(...)).toBeCompact()
+    expect([...]).toBeUnique()        or expect(new Backbone.Collection(...)).toBeUnique()
 
     # object methods
     
@@ -144,6 +100,18 @@ This is what I happen to need right now for my actual code. **As I write more ma
 * If you're a *sailor*, fork this project, add the matcher, and send me a pull request.
 * If you're the *captain of your own ship*, and you've already written some matchers like this, run up some signal flags and I'll include links to your project right here.
 * And if you're a *pirate*, take this code and/or just the idea and make your own library. I'm cool with that.
+
+Can I install it with npm?
+---
+
+Yes:
+
+    npm install UnderscoreMatchersForJasmine
+
+Can I install it in other kinds of projects?
+---
+
+If you're using Coffeescript, put `underscore_matchers.coffee` in your project. If you're using plain Javascript, it should therefore follow that you want to put `underscore_matchers.js` in your project. You can also put `underscore_matchers_spec.coffee` or `underscore_matchers_spec.js` in your project if you want to see these matchers test themselves. It's also handy documentation for how the matchers behave!
 
 Is it free?
 ---
