@@ -62,7 +62,7 @@ Which Matchers are included?
 
 Read the code in [Coffeescript][5] or [Javascript][6].
 
-Or here's the "tl;dr:"
+Or, here's the "tl;dr:"
 
     # collections:
     
@@ -91,7 +91,7 @@ Or here's the "tl;dr:"
 [5]: https://github.com/raganwald/Underscore-Matchers-for-Jasmine/blob/master/lib/underscore_matchers.coffee
 [6]: https://github.com/raganwald/Underscore-Matchers-for-Jasmine/blob/master/lib/underscore_matchers.js
 
-That's it? Aren't there any more?
+Are there any more?
 ---
 
 This is what I happen to need right now for my actual code. **As I write more matchers, I'll add them**. So, if you're interested, watch the library. I suppose I could go through and make a matcher for every function in Underscore, but I'd rather let it grow organically. If there's a matcher you need that isn't here, well, **we're all in the same boat**:
@@ -101,7 +101,7 @@ This is what I happen to need right now for my actual code. **As I write more ma
 * If you're the *captain of your own ship*, and you've already written some matchers like this, run up some signal flags and I'll include links to your project right here.
 * And if you're a *pirate*, take this code and/or just the idea and make your own library. I'm cool with that.
 
-Can I install it with npm?
+I use jasmine-node. Can I install it with npm?
 ---
 
 Yes:
