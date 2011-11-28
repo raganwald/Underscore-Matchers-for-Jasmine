@@ -106,6 +106,32 @@ Which Matchers are included?
 
 Read the code in [Coffeescript][5] or [Javascript][6].
 
+Or here's the "tl;dr:"
+
+    # collections:
+    
+    expect([...]).toBeEmpty() or expect(new Backbone.Collection(...)).toBeEmpty()
+    expect([...]).toInclude(foo, bar) or expect(new Backbone.Collection(...)).toInclude(foo, bar)
+    expect([...]).toIncludeAny(blitz) or expect(new Backbone.Collection(...)).toIncludeAny(blitz)
+    expect([...]).toBeCompact() or expect(new Backbone.Collection(...)).toBeCompact()
+    expect([...]).toBeUnique() or expect(new Backbone.Collection(...)).toBeUnique()
+
+    # object methods
+    
+    expect(foo).toRespondTo('push', 'pop')
+    expect(foo).toRespondToAny('push', 'isEmpty')
+    
+    # object properties
+    
+    expect(foo).toHave('length', 'arity')
+    expect(foo).toHaveAny('length', 'size')
+
+    # OO and is-a (all synonymous)
+    
+    expect(new Foo()).toBeAnInstanceOf(Foo)
+    expect(new Foo()).toBeA(Foo)
+    expect(new Foo()).toBeAn(Foo)
+
 [5]: https://github.com/raganwald/Underscore-Matchers-for-Jasmine/blob/master/lib/underscore_matchers.coffee
 [6]: https://github.com/raganwald/Underscore-Matchers-for-Jasmine/blob/master/lib/underscore_matchers.js
 
