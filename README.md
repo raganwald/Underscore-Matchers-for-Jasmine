@@ -88,8 +88,8 @@ Or, here's the "tl;dr:"
     expect(new Foo()).toBeA(Foo)
     expect(new Foo()).toBeAn(Foo)
 
-[5]: https://github.com/raganwald/Underscore-Matchers-for-Jasmine/blob/master/lib/underscore_matchers.coffee
-[6]: https://github.com/raganwald/Underscore-Matchers-for-Jasmine/blob/master/lib/underscore_matchers.js
+[5]: https://github.com/raganwald/Underscore-Matchers-for-Jasmine/blob/master/lib/UnderscoreMatchersForJasmine.coffee
+[6]: https://github.com/raganwald/Underscore-Matchers-for-Jasmine/blob/master/lib/UnderscoreMatchersForJasmine.js
 
 Are there any more?
 ---

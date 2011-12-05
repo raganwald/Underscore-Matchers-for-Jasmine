@@ -1,3 +1,5 @@
+_ = require('underscore') unless _?
+
 invoke = (method_name, args...) ->
   if _.isFunction(@actual[method_name])
     @actual[method_name].apply(@actual, args)
