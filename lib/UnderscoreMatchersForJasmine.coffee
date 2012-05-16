@@ -1,4 +1,4 @@
-_ ?= require('underscore')
+_ = require('underscore')
 
 invoke = (method_name, args...) ->
   if _.isFunction(@actual[method_name])
@@ -38,11 +38,11 @@ beforeEach ->
 
     toHave: (attrs...) ->
       _.all attrs, (attr) =>
-        @actual.has(attr)
+        invoke.call(this, 'has', attr)
 
     toHaveAny: (attrs...) ->
       _.any attrs, (attr) =>
-        @actual.has(attr)
+        invoke.call(this, 'has', attr)
 
     toBeAnInstanceOf: (clazz) ->
       @actual instanceof clazz
