@@ -1,7 +1,12 @@
 Underscore Matchers for Jasmine
 ===
 
-UnderscoreMatchersForJasmine adds a series of matchers for [Jasmine][1]-based Javascript/[Coffeescript][2] testing based on [Underscore][_] methods. Example:
+UnderscoreMatchersForJasmine adds a series of matchers for [Jasmine][1]-based JavaScript/[Coffeescript][2] testing based on [Underscore][_] methods, the [Backbone][b] library. Some handy JS expectations are thrown in as well that are helpful when testing your model objects (whether you use Backbone or not). Example:
+    
+[1]: https://github.com/pivotal/jasmine
+[2]: https://github.com/jashkenas/coffee-script
+[_]: http://documentcloud.github.com/underscore/
+[b]: http://documentcloud.github.com/backbone/
 
     expect(snafu).toInclude('s', 'n', 'a')
     
@@ -15,14 +20,11 @@ UnderscoreMatchersForJasmine adds a series of matchers for [Jasmine][1]-based Ja
       snafu.include('s') && snafu.include('n') && snafu.include('a')
     ).toBeTruthy()
     
-[1]: https://github.com/pivotal/jasmine
-[2]: https://github.com/jashkenas/coffee-script
-[_]: http://documentcloud.github.com/underscore/
-
 That makes your tests easy to read, for example:
 
     $ ->
       describe 'States and StateMachines', ->
+      
         it 'should associate states with a state machine and the state machine with its states', ->
           engine_status = new StateMachine()
           running = engine_status.new_state()
@@ -37,6 +39,45 @@ That makes your tests easy to read, for example:
           
           expect(running).toBeA(State)
           expect(running).toHave('rpm')
+          
+The defining characteristic of UnderscoreMatchersForJasmine is its transparent support for Backbone. Expectations like `.toInclude` and `.toHave` work with standard JavaScript objects and also with Backbone collections and models transparently. For example, `.toHave`:
+
+    foo =
+      attributes:
+        bar: 'bash'
+      
+    foo.hasOwnProperty('bar')
+      # => false
+    foo.hasOwnProperty('attributes')
+      # => true
+      
+    _.has(foo, 'bar')
+      # => false
+    _.has(foo, 'attributes')
+      # => true
+      
+    expect(foo).not.toHave('bar')
+    expect(foo).toHave('attributes')
+
+When you have a standard JS object, the `toHave` expectation mirrors `.hasOwnProperty` or `_.has`
+      
+    fooModel = new Backbone.Model
+      bar: 'bash'
+      
+    foo.hasOwnProperty('bar')
+      # => false
+    foo.hasOwnProperty('attributes')
+      # => true
+      
+    _.has(foo, 'bar')
+      # => false
+    _.has(foo, 'attributes')
+      # => true
+      
+    expect(foo).toHave('bar')
+    expect(foo).not.toHave('attributes')
+
+When you have a Backbone model, the `toHave` expectation mirrors `.has` from Backbone: It tests whether the model has an attribute. This is nearly always what you want.
 
 Is it any good?
 ---
@@ -50,9 +91,9 @@ Is it any good?
 
 Let's take it point by point:
 
-1. Underscore is a utility-belt library for Javascript. If you're using [Backbone.js][b], you are already using [Underscore][_]. If you aren't using either, you are excused from class, this library does not apply to your project.
-2. Jasmine is a [Test-Driven Development][tdd] testing framework for Javascript. You can run tests in a pretty browser window, you can run tests on the command line with Node.js, you can run tests in the console. If you are writing Javascript and/or Coffeescript, you should be using Jasmine.
-3. If you are using Underscore or Backbone and you are using Jasmine, your tests will be cleaner and more readable with these Underscore matchers for the same reason that your code is cleaner and more readable with Underscore.
+1. [Underscore][_] is a utility-belt library for JavaScript. [Backbone.js][b] is a lightweight MVC library for JavaScript.
+2. Jasmine is a [Test-Driven Development][tdd] testing framework for JavaScript. You can run tests in a pretty browser window, you can run tests on the command line with Node.js, you can run tests in the console. If you are writing JavaScript and/or Coffeescript, you should be using Jasmine.
+3. If you are using Underscore or Backbone and you are using Jasmine, your tests will be cleaner and more readable with these matchers for the same reason that your code is cleaner and more readable with Underscore and Backbone.
 
 [tdd]: http://en.wikipedia.org/wiki/Test_Driven_Development
 [b]: http://documentcloud.github.com/backbone/
@@ -60,7 +101,7 @@ Let's take it point by point:
 Which matchers are included?
 ---
 
-Read the code in [Coffeescript][5] or [Javascript][6].
+Read the code in [Coffeescript][5] or [JavaScript][6].
 
 Or, here's the "tl;dr:"
 
@@ -81,6 +122,23 @@ Or, here's the "tl;dr:"
     
     expect(foo).toHave('length', 'arity')
     expect(foo).toHaveAny('length', 'size')
+    
+    # model properties
+    
+    var Sidebar = Backbone.Model.extend({
+      promptColor: function() {
+        var cssColor = prompt("Please enter a CSS color:");
+        this.set({color: cssColor});
+      }
+    });
+    
+    myBar = new Sidebar();
+    
+    expect(myBar).not.toHave('color'); # we haven't set a color
+    
+    myBar.set({color: ...});
+    
+    expect(myBar).toHave('color'); # we haven't set a color
 
     # OO and is-a (all synonymous)
     
@@ -111,7 +169,7 @@ Yes:
 Can I install it in other kinds of projects?
 ---
 
-If you're using Coffeescript, put `underscore_matchers.coffee` in your project. If you're using plain Javascript, it should therefore follow that you want to put `underscore_matchers.js` in your project. You can also put `underscore_matchers_spec.coffee` or `underscore_matchers_spec.js` in your project if you want to see these matchers test themselves. It's also handy documentation for how the matchers behave!
+If you're using Coffeescript, put `underscore_matchers.coffee` in your project. If you're using plain JavaScript, it should therefore follow that you want to put `underscore_matchers.js` in your project. You can also put `underscore_matchers_spec.coffee` or `underscore_matchers_spec.js` in your project if you want to see these matchers test themselves. It's also handy documentation for how the matchers behave!
 
 Is it free?
 ---
@@ -129,7 +187,7 @@ I am.
 
 **Is there a gem?**
 
-No. This is a Coffeescript and Javascript include file, not a ruby library. Coffeescript and Javascript files work everywhere, and you can read the source any time you want.
+No. This is a Coffeescript and JavaScript include file, not a ruby library. Coffeescript and JavaScript files work everywhere, and you can read the source any time you want.
 
 **Any gotchas?**
 
