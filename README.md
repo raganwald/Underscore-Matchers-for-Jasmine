@@ -253,3 +253,8 @@ No. I also sneak in some Backbone stuff here and there, but the code works just 
       // => succeeds
       
 The same goes for collection tests like `.toInclude`. You can pass it a backbone collection or an array as you see fit. If you don't want that behaviour, Jasmine includes a `contains()` matcher that expects an array.
+
+post scriptum
+-------------
+
+I'm writing a book called [CoffeeScript Ristretto](http://leanpub.com/coffeescript-ristretto). Check it out!
